@@ -30,7 +30,7 @@ public class StringCalculator {
         if (cleanedInput.isEmpty()) {
             return 0;
         }
-        
+
         return Arrays
                 .stream(cleanedInput.split("\n"))
                 .map(StringCalculator::extractLineTotal).mapToInt(Integer::intValue)

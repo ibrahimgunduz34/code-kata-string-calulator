@@ -1,5 +1,8 @@
 # Code Kata
 ## String Calculator
+
+[![Build Status](https://travis-ci.org/ibrahimgunduz34/code-kata-string-calulator.svg?branch=master)](https://travis-ci.org/ibrahimgunduz34/code-kata-string-calulator)
+
 The repository was created with inspired the following site.
 [http://osherove.com/tdd-kata-1/](http://osherove.com/tdd-kata-1/)
 
