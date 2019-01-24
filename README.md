@@ -49,3 +49,4 @@ DONE:
 4##5##6
 ```
 
+* The input feed can contain multiple custom delimiter/values series. In each iteration, the definition must fallow the rules in the above.  
