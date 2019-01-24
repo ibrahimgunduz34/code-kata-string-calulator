@@ -8,6 +8,7 @@ public class StringCalculator {
                 .stream(line.split(","))
                 .map(String::trim)
                 .map(StringCalculator::parseValue)
+                .filter(x -> x <= 1000)
                 .mapToInt(Integer::intValue)
                 .sum();
     }
@@ -17,8 +18,6 @@ public class StringCalculator {
             Integer value = Integer.parseInt(element);
             if (value < 0) {
                 throw new IllegalArgumentException("The input value must be positive integer value");
-            } else if (value > 1000) {
-                return 0;
             }
             return value;
         } catch (NumberFormatException e) {
@@ -31,11 +30,7 @@ public class StringCalculator {
         if (cleanedInput.isEmpty()) {
             return 0;
         }
-
-        if (!cleanedInput.contains("\n") && !cleanedInput.contains(",")) {
-            return parseValue(cleanedInput);
-        }
-
+        
         return Arrays
                 .stream(cleanedInput.split("\n"))
                 .map(StringCalculator::extractLineTotal).mapToInt(Integer::intValue)
