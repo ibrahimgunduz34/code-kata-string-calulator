@@ -1,7 +1,5 @@
 package kata;
 
-import com.sun.nio.sctp.IllegalReceiveException;
-
 import java.util.Arrays;
 
 public class StringCalculator {
@@ -16,9 +14,15 @@ public class StringCalculator {
 
     private static Integer parseValue(String element) {
         try {
-            return Integer.parseInt(element);
+            Integer value = Integer.parseInt(element);
+            if (value < 0) {
+                throw new IllegalArgumentException("The input value must be positive integer value");
+            } else if (value > 1000) {
+                return 0;
+            }
+            return value;
         } catch (NumberFormatException e) {
-            throw new IllegalReceiveException("The input string must be consist by numbers and proper separators");
+            throw new IllegalArgumentException("The input string must be consist by numbers and proper separators");
         }
     }
 

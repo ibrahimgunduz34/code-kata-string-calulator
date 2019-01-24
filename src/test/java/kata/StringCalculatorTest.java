@@ -1,6 +1,5 @@
 package kata;
 
-import com.sun.nio.sctp.IllegalReceiveException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,13 +44,34 @@ public class StringCalculatorTest {
         assertEquals((Integer) 21, calculator.calculate("1\n2,3\n4,5\n6"));
     }
 
-    @Test(expected = IllegalReceiveException.class)
+    @Test public void ignore_numbers_greater_than_thousand() {
+        assertEquals((Integer) 0, calculator.calculate("1001"));
+        assertEquals((Integer) 3, calculator.calculate("1001,1,2"));
+        assertEquals((Integer) 3, calculator.calculate("1001\n1,2"));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void singlie_invalid_value_throws_exception() {
         calculator.calculate("p");
     }
 
-    @Test(expected = IllegalReceiveException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void comma_separated_values_that_consist_of_valid_and_invalid_arguments() {
         calculator.calculate("p,1,2");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void single_negative_value_throw_exception() {
+        calculator.calculate("-1");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void comma_separated_negative_value_throw_exception() {
+        calculator.calculate("-1,2");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void combined_negative_values_throw_exception() {
+        calculator.calculate("-1,2\n-3");
     }
 }

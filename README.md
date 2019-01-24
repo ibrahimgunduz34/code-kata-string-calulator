@@ -24,14 +24,25 @@ DONE:
  
  * Any line can not finalize with comma. 
  * Each values must be integer. Otherwise it must throw **IllegalArgumentException**
- 
- TODO:
  * Negative values must throw **IllegalArgumentException**
  * The values greater than 1000 must be ignored
+  
+ TODO:
  * A single char custom delimiter can be defined in the first line like the following:
+
  ```$xslt
 //#
 1#2
 3
 4#5#6
 ```
+
+* Group of chars must be able to use as delimiter
+
+ ```$xslt
+//[##]
+1##2
+3
+4##5##6
+```
+
